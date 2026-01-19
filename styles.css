@@ -203,6 +203,18 @@ body{
   text-align: center;
 }
 
+/* Center the Tools section content */
+#tools .grid {
+  display: flex;
+  justify-content: center;
+}
+
+#tools .card {
+  max-width: 420px;
+  width: 100%;
+}
+
+
 /* Responsive */
 @media (max-width: 900px){
   .grid{ grid-template-columns: 1fr; }
