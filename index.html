@@ -1,107 +1,247 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Kenna May — Portfolio</title>
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
 
-  <header class="topbar">
-    <div class="container topbar-inner">
-      <a class="brand" href="#">Kenna May</a>
-      <nav class="nav">
-        <a href="#work">Work</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
-  </header>
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
-  <main class="container">
+:root{
+  --bg: #0b0b0b;
+  --text: #f3f3f3;
+  --muted: #b7b7b7;
+  --line: #1f1f1f;
 
-    <section class="hero">
-      <h1 class="role">Digital Media • Motion Graphics • Illustration</h1>
-      <p class="tagline">
-        Creating visual experiences through motion, design, and digital art.
-        Available for freelance and full-time opportunities.
-      </p>
-<div class="actions">
-  <a class="btn btn-solid" href="portfolio.html">View Portfolio</a>
+  /* Optional accent: keep subtle. Change to #fff if you want zero accent. */
+  --accent: #b8a8ff;
+
+  --radius: 16px;
+}
+
+body{
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+}
+
+.container{
+  width: min(1100px, 92vw);
+  margin: 0 auto;
+}
+
+/* Top bar */
+.topbar{
+  position: sticky;
+  top: 0;
+  background: rgba(11,11,11,0.9);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+  z-index: 10;
+}
+
+.topbar-inner{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 0;
+}
+
+.brand{
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+.nav a{
+  color: var(--muted);
+  text-decoration: none;
+  margin-left: 22px;
+  font-size: 0.95rem;
+}
+
+.nav a:hover{ color: var(--text); }
+
+/* Hero */
+.hero{
+  text-align: center;
+  padding: 72px 0 48px;
+}
+
+.role{
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  margin-bottom: 10px;
+}
+
+.tagline{
+  color: var(--muted);
+  max-width: 68ch;
+  margin: 0 auto 22px;
+  font-size: 1.05rem;
+}
+
+.actions{
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+
+  margin-top: 40px; /* 👈 THIS adds space from the line */
+}
+
+.btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 18px;
+  border-radius: 14px;
+  text-decoration: none;
+  font-weight: 600;
+  border: 1px solid transparent;
+  transition: transform 150ms ease, background 150ms ease, border-color 150ms ease;
+}
+
+.btn:active{ transform: translateY(1px); }
+
+.btn-solid{
+  background: var(--text);
+  color: #0b0b0b;
+}
+
+.btn-outline{
+  background: transparent;
+  color: var(--text);
+  border-color: #2a2a2a;
+}
+
+.btn-outline:hover{
+  border-color: var(--accent); /* comment out if you want pure monochrome */
   
-  <a class="btn btn-outline" href="resume.pdf" download>Download Resume</a>
+}
+.btn{
+  transition:
+    transform 150ms cubic-bezier(.2,.8,.2,1),
+    background 150ms ease,
+    border-color 150ms ease;
+}
+
+.btn:hover{
+  transform: translateY(-2px);
+}
+.btn:active{
+  transform: translateY(0);
+}
+
+/* Sections */
+.section{
+  padding: 54px 0;
+  border-top: 1px solid var(--line);
+}
+
+.section-head{
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.section-head h2{
+  font-size: 1.6rem;
+  margin-bottom: 6px;
+  letter-spacing: -0.01em;
+}
+
+.section-head p{ color: var(--muted); }
+
+/* Work grid */
+.grid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.card{
+  display: block;
+  text-decoration: none;
+  color: var(--text);
+  border: 1px solid #202020;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: #0f0f0f;
+
+  transition:
+    transform 220ms cubic-bezier(.2,.8,.2,1),
+    border-color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.card:hover{
+  transform: translateY(-6px);
+  border-color: rgba(184,168,255,0.35);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+}
+
+/* Image ease */
+.thumb img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 400ms cubic-bezier(.2,.8,.2,1);
+}
+
+.card:hover .thumb img{
+  transform: scale(1.04);
+}
+
+.link{
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.link:hover{ text-decoration: underline; }
+
+.footer{
+  border-top: 1px solid var(--line);
+  padding: 22px 0;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* Center the Tools section content */
+#tools .grid {
+  display: flex;
+  justify-content: center;
+}
+
+#tools .card {
+  max-width: 420px;
+  width: 100%;
+}
+
+
+/* Responsive */
+@media (max-width: 900px){
+  .grid{ grid-template-columns: 1fr; }
+  .nav a{ margin-left: 14px; }
+}
+.socials{
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin-bottom: 10px;
+}
+
+.socials a{
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 150ms ease;
+  gap: 20px;
+
+}
+
+.socials a:hover{
+  color: var(--accent);
+}
+<div class="socials">
+  <a href="https://www.instagram.com/USERNAME" aria-label="Instagram">IG</a>
+  <a href="https://www.deviantart.com/USERNAME" aria-label="DeviantArt">DA</a>
+  <a href="https://www.youtube.com/@USERNAME" aria-label="YouTube">YT</a>
 </div>
-
-
-    <section id="work" class="section">
-      <div class="section-head">
-        <h2>Selected Work</h2>
-        <p>A showcase of recent projects and creative explorations</p>
-      </div>
-
-      <div class="grid">
-        <a class="card" href="#" aria-label="Open Neon Dreams">
-          <div class="thumb">
-            <!-- Replace with your own image -->
-            <img src="thumbs/neon-dreams.jpg" alt="Neon Dreams thumbnail" />
-          </div>
-          <div class="card-body">
-            <h3>Neon Dreams</h3>
-            <span>Motion study + style frames</span>
-          </div>
-        </a>
-
-        <a class="card" href="#" aria-label="Open Poster Series">
-          <div class="thumb">
-            <img src="thumbs/poster-series.jpg" alt="Poster Series thumbnail" />
-          </div>
-          <div class="card-body">
-            <h3>Poster Series</h3>
-            <span>Illustration + layout</span>
-          </div>
-        </a>
-
-        <a class="card" href="#" aria-label="Open Abstract Forms">
-          <div class="thumb">
-            <img src="thumbs/abstract-forms.jpg" alt="Abstract Forms thumbnail" />
-          </div>
-          <div class="card-body">
-            <h3>Abstract Forms</h3>
-            <span>3D accents + compositing</span>
-          </div>
-        </a>
-      </div>
-    </section>
-
-    <section id="about" class="section">
-      
-      <div class="section-head">
-        <h2>About</h2>
-        <p>
-          Kenna May is a visual development artist with a focus on character and environment design for narrative-driven projects.
-        </p>
-      </div>
-    </section>
-
-    <section id="contact" class="section">
-      <div class="section-head">
-        <h2>Contact</h2>
-        <p>Email: <a class="link" href="mailto:you@example.com">you@example.com</a></p>
-      </div>
-    </section>
-
-<footer class="footer">
-  <div class="socials">
-    <a href="https://www.deviantart.com/USERNAME" target="_blank" rel="noopener">DeviantArt</a>
-    <a href="https://www.instagram.com/USERNAME" target="_blank" rel="noopener">Instagram</a>
-    <a href="https://www.youtube.com/@USERNAME" target="_blank" rel="noopener">YouTube</a>
-  </div>
-  <p>© <span id="year"></span> Kenna May</p>
-</footer>
-
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
-</body>
-</html>
